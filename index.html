@@ -32,7 +32,7 @@
         // Lähetetään tai "emitoidaan" 
         // periaatteessa tavallinen chat viesti, ja tunniste on "chat message" mutta tässä
         // kohtaa viestin sisältö on vasta että käyttäjä on liittynyt.
-        socket.emit('chat message', Date.now() + " " + user + " liittyi keskusteluun.");
+        socket.emit('chat message', new Date(Date.now()).toLocaleString() + " " + user + " liittyi keskusteluun.");
 
         const form = document.getElementById('form');
         const input = document.getElementById('input');
@@ -44,7 +44,7 @@
         if (input.value) {
           // Kun formi on lähetetty emitoidaan palvelimelle viesti nimikkeellä "chat message"
           // Nimike on emitissä 1. parametrina ja pilkun jälkeen 2. parametriksi muodostetaan viesti:
-            socket.emit('chat message',Date.now() + " " + user + " kirjoitti: " + input.value);
+            socket.emit('chat message', new Date(Date.now()).toLocaleString() + " " + user + " kirjoitti: " + input.value);
             input.value = '';
             }
         });
